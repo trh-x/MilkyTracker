@@ -112,6 +112,7 @@ target_include_directories(ppui
 target_link_libraries(ppui 
     PUBLIC 
         ppcore
+    PRIVATE
         osinterface
 )
 

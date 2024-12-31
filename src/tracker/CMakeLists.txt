@@ -151,6 +151,7 @@ target_include_directories(tracker
 target_link_libraries(tracker
     fx
     trackerlib
+    ppui
     osinterface
 )
 

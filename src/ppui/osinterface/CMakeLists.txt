@@ -65,9 +65,9 @@ if(APPLE)
             ${PROJECT_SOURCE_DIR}/src/tracker/cocoa
     )
     
-    # Link against Cocoa framework and make osinterface PUBLIC
+    # Link against Cocoa framework
     target_link_libraries(osinterface 
-        PUBLIC 
+        PRIVATE 
             "-framework Cocoa"
     )
 elseif(WIN32)
