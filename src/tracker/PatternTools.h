@@ -20,10 +20,13 @@
  *
  */
 
-#ifndef PATTERNTOOLS__H
-#define PATTERNTOOLS__H
+#ifndef PATTERNTOOLS_H
+#define PATTERNTOOLS_H
 
+#include <cstddef>
 #include "BasicTypes.h"
+
+class TXMPattern;
 
 #define TONOTE(octave, note) \
 ((((pp_uint8)(octave)*12 + (pp_uint8)(note)) + 1) < 97 ? (((pp_uint8)(octave)*12 + (pp_uint8)(note)) + 1) : -1)

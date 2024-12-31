@@ -31,6 +31,8 @@
 #ifndef __SINGLETON_H__
 #define __SINGLETON_H__
 
+#include <cstddef>
+
 template<class type>
 class PPSingleton
 {

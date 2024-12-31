@@ -24,6 +24,8 @@
 #define TRACKERCONFIG__H
 
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
+#include "PPSystemString.h"
 
 #define NUMEFFECTMACROS 20
 

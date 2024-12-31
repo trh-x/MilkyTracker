@@ -85,7 +85,7 @@ PPOpenPanel::~PPOpenPanel()
 		delete caption;
 }
 
-void PPOpenPanel::addExtension(const PPString& ext, const PPString& desc)
+void PPOpenPanel::addExtension(const PPSystemString& ext, const PPSystemString& desc)
 {
 	Descriptor* d = new Descriptor(ext, desc);
 

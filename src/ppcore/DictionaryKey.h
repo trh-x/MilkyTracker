@@ -1,5 +1,5 @@
 /*
- *  tracker/TabTitleProvider.h
+ *  ppcore/DictionaryKey.h
  *
  *  Copyright 2009 Peter Barth
  *
@@ -21,31 +21,43 @@
  */
 
 /*
- *  TabTitleProvider.h
+ *  DictionaryKey.h
  *  MilkyTracker
  *
- *  Created by Peter Barth on 11.12.07.
+ *  Created by Peter Barth on Mon Mar 14 2005.
  *
  */
 
-#ifndef __TABTITLEPROVIDER_H__
-#define __TABTITLEPROVIDER_H__
+#ifndef DICTIONARYKEY__H
+#define DICTIONARYKEY__H
 
 #include "BasicTypes.h"
-#include "ppcore/PPString.h"
+#include "PPString.h"
 
-class TabTitleProvider
+class PPDictionaryKey
 {
 private:
-	class ModuleEditor& moduleEditor;
-
-public:
-	TabTitleProvider(ModuleEditor& moduleEditor) :
-		moduleEditor(moduleEditor)
-	{
-	}
+	PPString key;
+	PPString value;
 	
-	PPString getTabTitle();
+public:
+	PPDictionaryKey(const PPString& newKey, const PPString& newValue);
+
+	PPDictionaryKey(const PPString& newKey, const pp_uint32 value);
+
+	// copy c'tor
+	PPDictionaryKey(const PPDictionaryKey& source);
+	
+	void store(const PPString& newValue);
+	
+	void store(const pp_uint32 value);
+	
+	const PPString& getStringValue() const { return value; }
+	pp_uint32 getIntValue() const;
+	bool getBoolValue() const { return getIntValue() != 0; }
+
+	const PPString& getKey() const { return key; }
+
 };
 
 #endif

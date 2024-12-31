@@ -32,10 +32,11 @@
 #include "Control.h"
 #include "Event.h"
 #include "SimpleVector.h"
+#include "ppcore/PPString.h"
+#include "ScrollBar.h"
 
 // Forwards
 class PPGraphicsAbstract;
-class PPScrollbar;
 class PPFont;
 class PPButton;
 

@@ -31,24 +31,18 @@ target_include_directories(trackerlib
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${PROJECT_BINARY_DIR}/src/tracker
         ${PROJECT_SOURCE_DIR}/src
+        ${PROJECT_SOURCE_DIR}/src/ppcore
         ${PROJECT_SOURCE_DIR}/src/ppui
         ${PROJECT_SOURCE_DIR}/src/ppui/osinterface
-)
-
-if(WIN32)
-    target_include_directories(trackerlib PUBLIC
-        ${PROJECT_SOURCE_DIR}/src/ppui/osinterface/win32
-    )
-else()
-    target_include_directories(trackerlib PUBLIC
         ${PROJECT_SOURCE_DIR}/src/ppui/osinterface/posix
-    )
-endif()
+)
 
 target_link_libraries(trackerlib
     PUBLIC
+        ppcore
         milkyplay
         ppui
+        osinterface
 )
 
 add_executable(tracker
@@ -158,11 +152,13 @@ target_include_directories(tracker
         ${CMAKE_CURRENT_SOURCE_DIR}
         # Include the CMake-generated version header from the build directory
         ${PROJECT_BINARY_DIR}/src/tracker
+        ${PROJECT_SOURCE_DIR}/src/fx
 )
 
 target_link_libraries(tracker
     fx
     trackerlib
+    ppui
     osinterface
 )
 

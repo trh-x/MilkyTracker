@@ -36,9 +36,23 @@ add_library(osinterface STATIC
 target_include_directories(osinterface
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/src
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/..
 )
+
+target_link_libraries(osinterface
+    PUBLIC
+        ppcore
+        ppui
+)
+
+if(NOT APPLE AND NOT WIN32)
+    target_link_libraries(osinterface
+        PUBLIC
+            SDL2::SDL2
+    )
+endif()
 
 # Add platform-specific sources and include paths
 if(APPLE)
@@ -59,17 +73,7 @@ if(APPLE)
             posix/PPSystemString_POSIX.h
             posix/PPSystem_POSIX.h
     )
-    target_include_directories(osinterface 
-        PUBLIC 
-            posix
-            ${PROJECT_SOURCE_DIR}/src/tracker/cocoa
-    )
-    
-    # Link against Cocoa framework and make osinterface PUBLIC
-    target_link_libraries(osinterface 
-        PUBLIC 
-            "-framework Cocoa"
-    )
+    target_include_directories(osinterface PUBLIC posix)
 elseif(WIN32)
     target_sources(osinterface
         PRIVATE
@@ -102,22 +106,23 @@ else()
             # Sources
             posix/PPPath_POSIX.cpp
             posix/PPSystem_POSIX.cpp
+            posix/PPMutex.cpp
             sdl/PPMessageBox_SDL.cpp
-            sdl/PPMutex.cpp
             sdl/PPOpenPanel_SDL.cpp
-            sdl/PPQuitSaveAlert_SDL.cpp
             sdl/PPSavePanel_SDL.cpp
+            sdl/PPQuitSaveAlert_SDL.cpp
             sdl/SDL_ModalLoop.cpp
+            sdl/PPMutex.cpp
 
             # Headers
             posix/PPMutex.h
             posix/PPPath_POSIX.h
             posix/PPSystemString_POSIX.h
             posix/PPSystem_POSIX.h
-            sdl/PPMutex.h
             sdl/SDL_ModalLoop.h
+            sdl/PPMutex.h
     )
-    target_include_directories(osinterface PUBLIC posix)
+    target_include_directories(osinterface PUBLIC posix sdl)
 
     if(TARGET SDL2::SDL2)
         # If the distro built SDL2 with CMake, we can just link to an exported target

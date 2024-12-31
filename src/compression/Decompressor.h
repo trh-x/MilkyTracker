@@ -33,6 +33,9 @@
 
 #include "BasicTypes.h"
 #include "SimpleVector.h"
+#include "ppcore/PPString.h"
+#include "ppcore/Descriptor.h"
+#include "PPSystemString.h"
 
 class XMFile;
 

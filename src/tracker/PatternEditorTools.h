@@ -31,6 +31,7 @@
 #ifndef __PATTERNEDITORTOOLS_H__
 #define __PATTERNEDITORTOOLS_H__
 
+#include <cstddef>
 #include "BasicTypes.h"
 #include "MilkyPlayTypes.h"
 

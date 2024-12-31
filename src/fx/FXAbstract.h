@@ -31,7 +31,7 @@
 #ifndef FXABSTRACT__H
 #define FXABSTRACT__H
 
-#include "BasicTypes.h"
+#include "ppcore/BasicTypes.h"
 
 class FXAbstract
 {

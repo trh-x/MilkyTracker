@@ -1,5 +1,5 @@
 /*
- *  ppui/Dictionary.h
+ *  ppcore/Dictionary.h
  *
  *  Copyright 2009 Peter Barth
  *
@@ -32,8 +32,8 @@
 #define DICTIONARY__H
 
 #include "BasicTypes.h"
+#include "PPString.h"
 #include "DictionaryKey.h"
-#include "ppcore/PPString.h"
 
 template<class Type>
 class PPSimpleVector;

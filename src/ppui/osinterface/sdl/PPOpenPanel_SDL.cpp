@@ -46,7 +46,7 @@ PPOpenPanel::~PPOpenPanel()
 		delete[] caption;
 }
 
-void PPOpenPanel::addExtension(const PPString& ext, const PPString& desc)
+void PPOpenPanel::addExtension(const PPSystemString& ext, const PPSystemString& desc)
 {
 	Descriptor* d = new Descriptor(ext, desc);
 
@@ -56,13 +56,11 @@ void PPOpenPanel::addExtension(const PPString& ext, const PPString& desc)
 PPOpenPanel::ReturnCodes PPOpenPanel::runModal()
 {
 	// Create a message box (the message box will invoke the responder)
-	DialogFileSelector* dialog = new DialogFileSelector(screen, NULL, PP_DEFAULT_ID, this->caption);
+	DialogFileSelector* dialog = new DialogFileSelector(screen, NULL, PP_DEFAULT_ID, PPString(this->caption));
 
 	for (pp_int32 i = 0; i < items.size(); i++)
 	{
-		PPSystemString ext(items.get(i)->extension);
-		PPSystemString desc(items.get(i)->description);
-		dialog->addExtension(ext, desc);
+		dialog->addExtension(items.get(i)->extension, items.get(i)->description);
 	}
 
 	ReturnCodes result = SDL_runModalLoop(screen, dialog);

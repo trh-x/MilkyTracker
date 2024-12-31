@@ -1,5 +1,5 @@
 /*
- *  tracker/TabTitleProvider.h
+ *  ppui/Object.h
  *
  *  Copyright 2009 Peter Barth
  *
@@ -20,32 +20,11 @@
  *
  */
 
-/*
- *  TabTitleProvider.h
- *  MilkyTracker
- *
- *  Created by Peter Barth on 11.12.07.
- *
- */
+#ifndef OBJECT__H
+#define OBJECT__H
 
-#ifndef __TABTITLEPROVIDER_H__
-#define __TABTITLEPROVIDER_H__
-
-#include "BasicTypes.h"
-#include "ppcore/PPString.h"
-
-class TabTitleProvider
+class PPObject
 {
-private:
-	class ModuleEditor& moduleEditor;
-
-public:
-	TabTitleProvider(ModuleEditor& moduleEditor) :
-		moduleEditor(moduleEditor)
-	{
-	}
-	
-	PPString getTabTitle();
 };
 
 #endif

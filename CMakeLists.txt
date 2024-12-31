@@ -218,6 +218,7 @@ endif()
 
 add_subdirectory(docs)
 add_subdirectory(resources/music)
+add_subdirectory(src/ppcore)
 add_subdirectory(src/compression)
 add_subdirectory(src/fx)
 add_subdirectory(src/milkyplay)

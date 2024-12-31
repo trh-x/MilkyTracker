@@ -31,7 +31,7 @@
 #ifndef FIRE__H
 #define FIRE__H
 
-#include "BasicTypes.h"
+#include "ppcore/BasicTypes.h"
 #include "FXAbstract.h"
 
 class Fire : public FXAbstract

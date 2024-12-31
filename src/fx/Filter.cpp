@@ -20,7 +20,8 @@
  *
  */
 
-#include "BasicTypes.h"
+#include <cstring>
+#include "ppcore/BasicTypes.h"
 #include "fpmath.h"
 #include "Filter.h"
 

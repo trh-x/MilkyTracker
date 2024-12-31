@@ -34,6 +34,11 @@ target_include_directories(midi
         ${CMAKE_CURRENT_SOURCE_DIR}/../tracker
 )
 
+target_link_libraries(midi
+    PRIVATE
+        ppcore
+)
+
 # Add platform-specific sources and include paths
 if(APPLE)
     target_sources(midi PRIVATE

@@ -31,7 +31,9 @@
 #ifndef __FILEINDENTIFICATOR_H__
 #define __FILEINDENTIFICATOR_H__
 
+#include <cstddef>
 #include "BasicTypes.h"
+#include "PPSystemString.h"
 
 class XMFile;
 

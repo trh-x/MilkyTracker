@@ -28,9 +28,10 @@
 #ifndef BUTTON__H
 #define BUTTON__H
 
-#include "BasicTypes.h"
+#include "ppcore/PPString.h"
 #include "Control.h"
 #include "Event.h"
+#include "BasicTypes.h"
 
 // Forwards
 class PPGraphicsAbstract;

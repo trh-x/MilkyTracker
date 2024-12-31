@@ -33,6 +33,8 @@
 
 #include "BasicTypes.h"
 #include "ColorPaletteContainer.h"
+#include "ppcore/PPString.h"
+#include "PPSystemString.h"
 
 class ColorExportImport
 {

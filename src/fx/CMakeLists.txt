@@ -64,10 +64,31 @@ add_library(fx STATIC
     fpmath.h
 )
 
+set_target_properties(fx PROPERTIES
+    CXX_STANDARD 11
+    CXX_STANDARD_REQUIRED YES
+    CXX_EXTENSIONS NO
+)
+
 target_include_directories(fx
     PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/../ppui/osinterface/posix
-        ${CMAKE_CURRENT_SOURCE_DIR}/../ppui
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/..
+        ${PROJECT_SOURCE_DIR}/src
+        ${PROJECT_SOURCE_DIR}/src/ppui
+)
+
+target_compile_options(fx
+    PRIVATE
+        -include cstring
+)
+
+target_compile_definitions(fx
+    PRIVATE
+        PP_INT64_TYPE=int64_t
+)
+
+target_link_libraries(fx
+    PRIVATE
+        ppcore
+        osinterface
 )

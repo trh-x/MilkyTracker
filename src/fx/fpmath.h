@@ -23,7 +23,7 @@
 #ifndef FPMATH_H
 #define FPMATH_H
 
-#include "BasicTypes.h"
+#include "ppcore/BasicTypes.h"
 
 #define fpceil(x) ((x+65535)>>16)
 

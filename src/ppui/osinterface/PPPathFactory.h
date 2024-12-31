@@ -28,10 +28,10 @@
  *
  */
 
-#ifndef __PPPATHFACTORY_POSIX_H__
-#define __PPPATHFACTORY_POSIX_H__
+#ifndef __PPPATHFACTORY_H__
+#define __PPPATHFACTORY_H__
 
-#include "PPPath.h"
+#include "../PPPath.h"
 
 class PPPathFactory
 {

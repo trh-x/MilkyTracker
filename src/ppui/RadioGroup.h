@@ -31,6 +31,7 @@
 #include "BasicTypes.h"
 #include "Control.h"
 #include "SimpleVector.h"
+#include "ppcore/PPString.h"
 
 // Forwards
 class PPGraphicsAbstract;

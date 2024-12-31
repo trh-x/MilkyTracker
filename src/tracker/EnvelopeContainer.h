@@ -32,6 +32,7 @@
 #define ENVELOPECONTAINER__H
 
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
 
 struct TEnvelope;
 

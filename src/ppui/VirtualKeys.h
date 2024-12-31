@@ -28,12 +28,17 @@
  *
  */
 
-#ifndef VIRTUALKEYS__H
-#define VIRTUALKEYS__H
+#ifndef __VIRTUALKEYS_H__
+#define __VIRTUALKEYS_H__
+
+// Little helper macro
+#define PPSTR_PERIODS "\xef"
 
 // These might look familiar to windows programmers ;)
 enum
 {
+	VK_NONE = 0,
+	
 	VK_UNDEFINED =     0x00,
 	
 	VK_LBUTTON =       0x01,

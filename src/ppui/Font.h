@@ -27,6 +27,7 @@
 #define FONT__H
 
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
 #include "SimpleVector.h"
 
 #define MAXFONTS 256

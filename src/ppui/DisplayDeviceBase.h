@@ -34,6 +34,7 @@
 
 #include "BasicTypes.h"
 #include "Font.h"
+#include "VirtualKeys.h"
 
 class PPGraphicsAbstract;
 

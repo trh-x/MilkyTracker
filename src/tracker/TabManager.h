@@ -31,6 +31,7 @@
 #ifndef __TABMANAGER_H__
 #define __TABMANAGER_H__
 
+#include <cstddef>
 #include "BasicTypes.h"
 
 template<class Type>

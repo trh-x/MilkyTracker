@@ -1,5 +1,5 @@
 /*
- *  ppui/DictionaryKey.h
+ *  ppui/DictionaryKey.cpp
  *
  *  Copyright 2009 Peter Barth
  *
@@ -21,43 +21,53 @@
  */
 
 /*
- *  DictionaryKey.h
+ *  PPDictionaryKey.cpp
  *  MilkyTracker
  *
  *  Created by Peter Barth on Mon Mar 14 2005.
  *
  */
 
-#ifndef DICTIONARYKEY__H
-#define DICTIONARYKEY__H
+#include "DictionaryKey.h"
+#include <stdlib.h>
 
-#include "BasicTypes.h"
-#include "ppcore/PPString.h"
-
-class PPDictionaryKey
+PPDictionaryKey::PPDictionaryKey(const PPString& newKey, const PPString& newValue) :
+	key(newKey),
+	value(newValue)
 {
-private:
-	PPString key;
-	PPString value;
+}
+
+PPDictionaryKey::PPDictionaryKey(const PPString& newKey, const pp_uint32 value) :
+	key(newKey)
+{
+	store(value);
+}
+
+PPDictionaryKey::PPDictionaryKey(const PPDictionaryKey& source)
+{
+	key = source.key;
+	value = source.value;
+}
+
+void PPDictionaryKey::store(const PPString& newValue)
+{
+	value = newValue;
+}
 	
-public:
-	PPDictionaryKey(const PPString& newKey, const PPString& newValue);
-
-	PPDictionaryKey(const PPString& newKey, const pp_uint32 value);
-
-	// copy c'tor
-	PPDictionaryKey(const PPDictionaryKey& source);
+void PPDictionaryKey::store(const pp_uint32 value)
+{
+	char buffer[100];
 	
-	void store(const PPString& newValue);
+	sprintf(buffer,"%i",value);
 	
-	void store(const pp_uint32 value);
+	this->value = buffer;
+}
+
+pp_uint32 PPDictionaryKey::getIntValue() const
+{
+	pp_uint32 v; 
+	sscanf(value, "%i", &v);
 	
-	const PPString& getStringValue() const { return value; }
-	pp_uint32 getIntValue() const;
-	bool getBoolValue() const { return getIntValue() != 0; }
+	return v;
+}
 
-	const PPString& getKey() const { return key; }
-
-};
-
-#endif

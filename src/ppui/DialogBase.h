@@ -33,6 +33,7 @@
 
 #include "BasicTypes.h"
 #include "Event.h"
+#include "ppcore/PPString.h"
 
 class PPScreen;
 class PPMessageBoxContainer;

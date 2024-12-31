@@ -20,7 +20,9 @@
  *
  */
 
+#include <cstdint>
 #include "fpmath.h"
+#include "ppcore/BasicTypes.h"
 
 #ifdef _MIPS_
 extern "C" { // Use extern "c" fopp_int32r C++ file only 

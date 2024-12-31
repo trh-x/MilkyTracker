@@ -25,6 +25,7 @@
 
 #include <CoreMIDI/CoreMIDI.h>
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
 
 class Tracker;
 class PPMutex;

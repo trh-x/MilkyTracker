@@ -33,6 +33,7 @@
 
 #include "DialogBase.h"
 #include "SimpleVector.h"
+#include "ppcore/Descriptor.h"
 
 class PPListBoxFileBrowser;
 class PPListBox;
@@ -94,7 +95,7 @@ public:
 
 	void setCurrentEditFileName(const PPSystemString& name);	
 	
-	void addExtension(const PPString& ext, const PPString& desc);
+	void addExtension(const PPSystemString& ext, const PPSystemString& desc);
 
 private:	
 	void updateButtonStates(bool repaint = true);

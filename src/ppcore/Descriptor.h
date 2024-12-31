@@ -1,7 +1,8 @@
 /*
- *  tracker/TabTitleProvider.h
+ *  ppcore/Descriptor.h
  *
  *  Copyright 2009 Peter Barth
+ *  Copyright 2024 Dale Whinham
  *
  *  This file is part of Milkytracker.
  *
@@ -20,32 +21,21 @@
  *
  */
 
-/*
- *  TabTitleProvider.h
- *  MilkyTracker
- *
- *  Created by Peter Barth on 11.12.07.
- *
- */
+#ifndef PPCORE_DESCRIPTOR_H
+#define PPCORE_DESCRIPTOR_H
 
-#ifndef __TABTITLEPROVIDER_H__
-#define __TABTITLEPROVIDER_H__
+#include "PPSystemString.h"
 
-#include "BasicTypes.h"
-#include "ppcore/PPString.h"
-
-class TabTitleProvider
+struct Descriptor
 {
-private:
-	class ModuleEditor& moduleEditor;
+	PPSystemString description;
+	PPSystemString extension;
 
-public:
-	TabTitleProvider(ModuleEditor& moduleEditor) :
-		moduleEditor(moduleEditor)
+	Descriptor(const PPSystemString& ext, const PPSystemString& desc) :
+		description(desc),
+		extension(ext)
 	{
 	}
-	
-	PPString getTabTitle();
 };
 
-#endif
+#endif 
