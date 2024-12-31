@@ -40,6 +40,8 @@
  */
 
 #include "SDL_KeyTranslation.h"
+#include "ppui/ScanCodes.h"
+#include "ppui/VirtualKeys.h"
 
 pp_uint16 toVK(const SDL_Keysym& keysym)
 {

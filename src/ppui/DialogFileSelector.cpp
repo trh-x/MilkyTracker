@@ -544,7 +544,7 @@ void DialogFileSelector::next()
 	refresh();
 }
 
-void DialogFileSelector::addExtension(const PPString& ext, const PPString& desc)
+void DialogFileSelector::addExtension(const PPSystemString& ext, const PPSystemString& desc)
 {
 	extensions.add(new Descriptor(ext, desc));
 }
@@ -555,7 +555,6 @@ void DialogFileSelector::refreshExtensions()
 
 	for (pp_int32 i = 0; i < extensions.size(); i++)
 		listBoxFiles->addExtension(extensions.get(i)->extension, extensions.get(i)->description);
-		
 }
 
 void DialogFileSelector::updateFilter()

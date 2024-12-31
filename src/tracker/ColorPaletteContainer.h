@@ -32,6 +32,7 @@
 #define COLORPALETTECONTAINER__H
 
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
 
 // Verx simple color palette, limited colors
 struct TColorPalette

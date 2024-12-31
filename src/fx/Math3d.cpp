@@ -21,6 +21,7 @@
  */
 
 #include "Math3d.h"
+#include <cstring>
 
 /////////////////////
 // VectorFP struct //

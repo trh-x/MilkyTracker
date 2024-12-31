@@ -1,7 +1,7 @@
 /*
 *  ppui/CheckBoxLabel.h
 *
-*  Copyright 2017 Henri Isojärvi
+*  Copyright 2017 Henri Isojï¿½rvi
 *
 *  This file is part of Milkytracker.
 *
@@ -29,7 +29,9 @@
 #define CHECKBOXLABEL__H
 
 #include "StaticText.h"
-#include "CheckBox.h"
+#include "ppcore/PPString.h"
+
+class PPCheckBox;
 
 class PPCheckBoxLabel : public PPStaticText
 {

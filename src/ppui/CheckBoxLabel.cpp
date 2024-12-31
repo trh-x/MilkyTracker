@@ -1,7 +1,7 @@
 /*
 *  ppui/CheckBoxLabel.h
 *
-*  Copyright 2017 Henri Isojärvi
+*  Copyright 2017 Henri Isojï¿½rvi
 *
 *  This file is part of Milkytracker.
 *
@@ -21,6 +21,8 @@
 */
 
 #include "CheckBoxLabel.h"
+#include "Event.h"
+#include "CheckBox.h"
 
 PPCheckBoxLabel::PPCheckBoxLabel(pp_int32 id, PPScreen* parentScreen, EventListenerInterface* eventListener, 
 	const PPPoint& location, 

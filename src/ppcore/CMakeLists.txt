@@ -20,16 +20,27 @@
 #
 
 add_library(ppcore STATIC
-    BasicTypes.h
+    # Sources
     Dictionary.cpp
-    Dictionary.h
     DictionaryKey.cpp
+
+    # Headers
+    BasicTypes.h
+    Descriptor.h
+    Dictionary.h
     DictionaryKey.h
-    SimpleVector.h
     Object.h
+    PPString.h
+    SimpleVector.h
+)
+
+target_compile_definitions(ppcore
+    PUBLIC
+        __STDC_WANT_LIB_EXT1__=1  # For NULL and other standard definitions
 )
 
 target_include_directories(ppcore
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/src
 ) 

@@ -33,6 +33,7 @@
 
 #include "BasicTypes.h"
 #include "MilkyPlayCommon.h"
+#include "PPSystemString.h"
 
 class ModuleServices
 {
@@ -43,8 +44,8 @@ private:
 
 public:
 	ModuleServices(XModule& module) :
-		module(module),
-		estimatedSongLength(-1)
+			module(module),
+			estimatedSongLength(-1)
 	{
 	}
 	

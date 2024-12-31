@@ -218,6 +218,7 @@ endif()
 
 add_subdirectory(docs)
 add_subdirectory(resources/music)
+add_subdirectory(src/ppcore)
 add_subdirectory(src/compression)
 add_subdirectory(src/fx)
 add_subdirectory(src/milkyplay)
@@ -227,11 +228,3 @@ add_subdirectory(src/tools/export-to-wav)
 
 # Set MilkyTracker target as startup project in Visual Studio
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT tracker)
-
-# Add core libraries first
-add_subdirectory(src/ppcore)
-add_subdirectory(src/compression)
-add_subdirectory(src/fx)
-add_subdirectory(src/milkyplay)
-add_subdirectory(src/ppui)
-add_subdirectory(src/tracker)

@@ -23,6 +23,7 @@
 #ifndef SIMPLEVECTOR__H
 #define SIMPLEVECTOR__H
 
+#include <cstddef>
 #include "BasicTypes.h"
 
 template<class Type>

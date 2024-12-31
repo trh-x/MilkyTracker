@@ -32,6 +32,7 @@
 #define DICTIONARY__H
 
 #include "BasicTypes.h"
+#include "PPString.h"
 #include "DictionaryKey.h"
 
 template<class Type>

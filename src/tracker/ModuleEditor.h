@@ -27,6 +27,7 @@
 #include "BasicTypes.h"
 #include "PatternEditorTools.h"
 #include "SongLengthEstimator.h"
+#include "PPSystemString.h"
 
 class XIInstrument;
 class PatternEditor;

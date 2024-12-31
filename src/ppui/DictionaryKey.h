@@ -32,6 +32,7 @@
 #define DICTIONARYKEY__H
 
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
 
 class PPDictionaryKey
 {

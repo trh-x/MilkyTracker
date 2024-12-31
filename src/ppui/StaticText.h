@@ -30,6 +30,7 @@
 
 #include "BasicTypes.h"
 #include "Control.h"
+#include "ppcore/PPString.h"
 
 // Forwards
 class PPGraphicsAbstract;

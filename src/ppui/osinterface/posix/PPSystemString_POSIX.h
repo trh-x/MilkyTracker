@@ -28,9 +28,11 @@
  *
  */
 
-#ifndef PPSYSTEMSTRING__H
-#define PPSYSTEMSTRING__H
+#ifndef PPUI_SYSTEMSTRING_POSIX_H
+#define PPUI_SYSTEMSTRING_POSIX_H
 
+#include <cstring>
+#include <strings.h>  // for strcasecmp
 #include "BasicTypes.h"
 
 class PPSystemString

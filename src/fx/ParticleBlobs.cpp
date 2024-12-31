@@ -22,8 +22,10 @@
 
 #include "ParticleBlobs.h"
 #include "Math3d.h"
+#include "osinterface/PPSystem.h"
 #include "Filter.h"
 #include "Texture.h"
+#include <math.h>
 
 #define GRIDSIZE 8
 #define NUMPARTICLES (GRIDSIZE*GRIDSIZE*GRIDSIZE)

@@ -33,6 +33,7 @@
 
 #include "BasicTypes.h"
 #include "DictionaryKey.h"
+#include "ppcore/PPString.h"
 
 template<class Type>
 class PPSimpleVector;

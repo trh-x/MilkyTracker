@@ -25,6 +25,8 @@
 
 #include "PPModalDialog.h"
 #include "SimpleVector.h"
+#include "ppcore/PPString.h"
+#include "ppcore/Descriptor.h"
 
 class PPOpenPanel : public PPModalDialog
 {
@@ -44,10 +46,10 @@ public:
 	virtual void addExtensions(const char* const extensions[])
 	{
 		for (pp_uint32 i = 0; extensions[i] != NULL; i+=2)
-			addExtension(extensions[i], extensions[i+1]);
+			addExtension(PPSystemString(extensions[i]), PPSystemString(extensions[i+1]));
 	}
 
-	virtual void addExtension(const PPString& ext, const PPString& desc);
+	virtual void addExtension(const PPSystemString& ext, const PPSystemString& desc);
 
 	virtual const PPSystemString& getFileName() { return fileName; }
 

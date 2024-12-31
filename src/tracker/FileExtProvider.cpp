@@ -114,7 +114,7 @@ const char* const* FileExtProvider::fillList(const char* const* baseList, Extens
 	
 	// misuse a decompressor to retrieve the file types it can decompress
 	// they're not ordered though
-	Decompressor decompressor("");
+	Decompressor decompressor(PPSystemString(""));
 
 	if (decompressor.doesServeHint((DecompressorBase::Hints)type))
 	{

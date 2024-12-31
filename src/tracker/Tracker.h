@@ -20,10 +20,12 @@
  *
  */
 
-#ifndef TRACKER__H
-#define TRACKER__H
+#ifndef TRACKER_H
+#define TRACKER_H
 
 #include "BasicTypes.h"
+#include "ppcore/PPString.h"
+#include "PPSystemString.h"
 #include "Event.h"
 #include "EditModes.h"
 #include "FileTypes.h"

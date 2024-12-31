@@ -45,19 +45,4 @@
 // UI-specific types and includes
 #include "ScanCodes.h"
 
-struct PPColor
-{
-	pp_uint8 r,g,b;
-	
-	PPColor() :
-		r(0), g(0), b(0)
-	{
-	}
-	
-	PPColor(pp_uint8 r, pp_uint8 g, pp_uint8 b) :
-		r(r), g(g), b(b)
-	{
-	}
-};
-
 #endif

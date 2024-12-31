@@ -32,6 +32,9 @@
 #define SYSTEM_POSIX_H
 
 #include "../../../milkyplay/MilkyPlayCommon.h"
+#include "ppcore/BasicTypes.h"
+
+pp_uint32 PPGetTickCount();
 
 class System
 {

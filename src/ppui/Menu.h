@@ -33,6 +33,7 @@
 
 #include "BasicTypes.h"
 #include "SimpleVector.h"
+#include "ppcore/PPString.h"
 
 class PPFont;
 class PPGraphicsAbstract;

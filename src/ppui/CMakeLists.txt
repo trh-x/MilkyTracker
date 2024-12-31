@@ -104,18 +104,30 @@ add_library(ppui STATIC
 
 target_include_directories(ppui
     PUBLIC
-        .
-    PRIVATE
-        osinterface
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/osinterface
+        ${CMAKE_CURRENT_SOURCE_DIR}/osinterface/posix
+        ${PROJECT_SOURCE_DIR}/src/ppcore
+        ${PROJECT_SOURCE_DIR}/src/ppui
+        ${PROJECT_SOURCE_DIR}/src/ppui/osinterface
+        ${PROJECT_SOURCE_DIR}/src/ppui/sdl
 )
 
-# Link against osinterface
-target_link_libraries(ppui 
-    PUBLIC 
+target_link_libraries(ppui
+    PUBLIC
         ppcore
-    PRIVATE
-        osinterface
 )
+
+# Add SDL2 for non-Apple, non-Windows platforms
+if(NOT APPLE AND NOT WIN32)
+    if(TARGET SDL2::SDL2)
+        target_link_libraries(ppui PUBLIC SDL2::SDL2)
+    else()
+        target_include_directories(ppui PUBLIC ${SDL2_INCLUDE_DIRS})
+        target_link_libraries(ppui PUBLIC ${SDL2_LIBRARIES})
+    endif()
+endif()
 
 # Add platform-specific sources and include paths
 if(APPLE)

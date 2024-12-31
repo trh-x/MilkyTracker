@@ -33,6 +33,7 @@
 #include "ListBox.h"
 #include "SimpleVector.h"
 #include "UndoStack.h"
+#include "ppcore/Descriptor.h"
 
 class PPListBoxFileBrowser : public PPListBox
 {
@@ -42,6 +43,7 @@ public:
 		SortByName,
 		SortBySize,
 		SortByExtension,
+		
 		NumSortRules
 	};
 
@@ -89,7 +91,7 @@ public:
 	// must contain pairs of extensions / description
 	// terminated by TWO NULL pointers
 	void addExtensions(const char* const extensions[]);
-	void addExtension(const PPString& ext, const PPString& desc);
+	void addExtension(const PPSystemString& ext, const PPSystemString& desc);
 	
 	const PPPath& getCurrentPath() const { return *currentPath; }
 	PPSystemString getCurrentPathAsString() const;

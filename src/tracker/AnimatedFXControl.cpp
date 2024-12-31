@@ -37,6 +37,7 @@
 #include "LogoSmall.h"
 #include "Tools.h"
 #include "version.h"
+#include "osinterface/posix/PPSystem_POSIX.h"
 
 #undef FXTOGGLE
 

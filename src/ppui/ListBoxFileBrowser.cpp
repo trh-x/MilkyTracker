@@ -72,10 +72,10 @@ void PPListBoxFileBrowser::clearExtensions()
 void PPListBoxFileBrowser::addExtensions(const char* const extensions[])
 {
 	for (pp_uint32 i = 0; extensions[i] != NULL; i+=2)
-		addExtension(extensions[i], extensions[i+1]);
+		addExtension(PPSystemString(extensions[i]), PPSystemString(extensions[i+1]));
 }
 
-void PPListBoxFileBrowser::addExtension(const PPString& ext, const PPString& desc)
+void PPListBoxFileBrowser::addExtension(const PPSystemString& ext, const PPSystemString& desc)
 {
 	Descriptor* d = new Descriptor(ext, desc);
 	items.add(d);

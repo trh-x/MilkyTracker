@@ -1,7 +1,7 @@
 /*
- *  tracker/TabTitleProvider.h
+ *  ppui/PPSystemString.h
  *
- *  Copyright 2009 Peter Barth
+ *  Copyright 2023 
  *
  *  This file is part of Milkytracker.
  *
@@ -20,32 +20,13 @@
  *
  */
 
-/*
- *  TabTitleProvider.h
- *  MilkyTracker
- *
- *  Created by Peter Barth on 11.12.07.
- *
- */
+#ifndef PPUI_SYSTEMSTRING_H
+#define PPUI_SYSTEMSTRING_H
 
-#ifndef __TABTITLEPROVIDER_H__
-#define __TABTITLEPROVIDER_H__
-
-#include "BasicTypes.h"
-#include "ppcore/PPString.h"
-
-class TabTitleProvider
-{
-private:
-	class ModuleEditor& moduleEditor;
-
-public:
-	TabTitleProvider(ModuleEditor& moduleEditor) :
-		moduleEditor(moduleEditor)
-	{
-	}
-	
-	PPString getTabTitle();
-};
-
+#ifdef WIN32
+#include "osinterface/win32/PPSystemString_WIN32.h"
+#else
+#include "osinterface/posix/PPSystemString_POSIX.h"
 #endif
+
+#endif 
