@@ -109,7 +109,11 @@ target_include_directories(ppui
 )
 
 # Link against osinterface
-target_link_libraries(ppui PUBLIC osinterface)
+target_link_libraries(ppui 
+    PUBLIC 
+        ppcore
+        osinterface
+)
 
 # Add platform-specific sources and include paths
 if(APPLE)
@@ -139,10 +143,8 @@ elseif(WIN32)
     )
 
     if(TARGET SDL2::SDL2)
-        # If the distro built SDL2 with CMake, we can just link to an exported target
         target_link_libraries(ppui PUBLIC SDL2::SDL2)
     else()
-        # Otherwise we need to do things the old-fashioned way for compatibility
         target_include_directories(ppui PUBLIC ${SDL2_INCLUDE_DIRS})
         target_link_libraries(ppui PUBLIC ${SDL2_LIBRARIES})
     endif()

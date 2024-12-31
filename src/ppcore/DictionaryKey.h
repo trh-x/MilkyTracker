@@ -1,8 +1,7 @@
 /*
- *  ppui/BasicTypes.h
+ *  ppcore/DictionaryKey.h
  *
  *  Copyright 2009 Peter Barth
- *  Copyright 2024 Dale Whinham
  *
  *  This file is part of Milkytracker.
  *
@@ -21,43 +20,43 @@
  *
  */
 
-#ifndef PPUI_BASICTYPES__H
-#define PPUI_BASICTYPES__H
+/*
+ *  DictionaryKey.h
+ *  MilkyTracker
+ *
+ *  Created by Peter Barth on Mon Mar 14 2005.
+ *
+ */
 
-// Include core types
-#include <ppcore/BasicTypes.h>
+#ifndef DICTIONARYKEY__H
+#define DICTIONARYKEY__H
 
-#if defined(WIN32) || defined(_WIN32_WCE) 
-	#include <windows.h>
-	#include <stdio.h>
-	#define VK_ALT        VK_MENU
-	#define __PPUI_WINDOWS__
-#endif
+#include "BasicTypes.h"
 
-#if !defined(__PPUI_WINDOWS__)
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
-	#include "VirtualKeys.h"
-	#include "PPSystemString_POSIX.h"
-#endif
-
-// UI-specific types and includes
-#include "ScanCodes.h"
-
-struct PPColor
+class PPDictionaryKey
 {
-	pp_uint8 r,g,b;
+private:
+	PPString key;
+	PPString value;
 	
-	PPColor() :
-		r(0), g(0), b(0)
-	{
-	}
+public:
+	PPDictionaryKey(const PPString& newKey, const PPString& newValue);
+
+	PPDictionaryKey(const PPString& newKey, const pp_uint32 value);
+
+	// copy c'tor
+	PPDictionaryKey(const PPDictionaryKey& source);
 	
-	PPColor(pp_uint8 r, pp_uint8 g, pp_uint8 b) :
-		r(r), g(g), b(b)
-	{
-	}
+	void store(const PPString& newValue);
+	
+	void store(const pp_uint32 value);
+	
+	const PPString& getStringValue() const { return value; }
+	pp_uint32 getIntValue() const;
+	bool getBoolValue() const { return getIntValue() != 0; }
+
+	const PPString& getKey() const { return key; }
+
 };
 
 #endif

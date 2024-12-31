@@ -1,8 +1,7 @@
 /*
- *  ppui/BasicTypes.h
+ *  ppui/Object.h
  *
  *  Copyright 2009 Peter Barth
- *  Copyright 2024 Dale Whinham
  *
  *  This file is part of Milkytracker.
  *
@@ -21,43 +20,11 @@
  *
  */
 
-#ifndef PPUI_BASICTYPES__H
-#define PPUI_BASICTYPES__H
+#ifndef OBJECT__H
+#define OBJECT__H
 
-// Include core types
-#include <ppcore/BasicTypes.h>
-
-#if defined(WIN32) || defined(_WIN32_WCE) 
-	#include <windows.h>
-	#include <stdio.h>
-	#define VK_ALT        VK_MENU
-	#define __PPUI_WINDOWS__
-#endif
-
-#if !defined(__PPUI_WINDOWS__)
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
-	#include "VirtualKeys.h"
-	#include "PPSystemString_POSIX.h"
-#endif
-
-// UI-specific types and includes
-#include "ScanCodes.h"
-
-struct PPColor
+class PPObject
 {
-	pp_uint8 r,g,b;
-	
-	PPColor() :
-		r(0), g(0), b(0)
-	{
-	}
-	
-	PPColor(pp_uint8 r, pp_uint8 g, pp_uint8 b) :
-		r(r), g(g), b(b)
-	{
-	}
 };
 
 #endif

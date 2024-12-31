@@ -31,24 +31,12 @@ target_include_directories(trackerlib
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${PROJECT_BINARY_DIR}/src/tracker
         ${PROJECT_SOURCE_DIR}/src
-        ${PROJECT_SOURCE_DIR}/src/ppui
-        ${PROJECT_SOURCE_DIR}/src/ppui/osinterface
 )
-
-if(WIN32)
-    target_include_directories(trackerlib PUBLIC
-        ${PROJECT_SOURCE_DIR}/src/ppui/osinterface/win32
-    )
-else()
-    target_include_directories(trackerlib PUBLIC
-        ${PROJECT_SOURCE_DIR}/src/ppui/osinterface/posix
-    )
-endif()
 
 target_link_libraries(trackerlib
     PUBLIC
+        ppcore
         milkyplay
-        ppui
 )
 
 add_executable(tracker
