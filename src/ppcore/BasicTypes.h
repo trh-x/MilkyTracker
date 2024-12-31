@@ -34,146 +34,182 @@ typedef signed long long pp_int64;
 typedef unsigned long long pp_uint64;
 
 // Basic structures needed by Dictionary
-struct PPPoint 
+struct PPPoint
 {
-    pp_int32 x, y;
-    
-    PPPoint() :
-        x(0), y(0)
-    {
-    }
-    
-    PPPoint(pp_int32 x, pp_int32 y) :
-        x(x), y(y)
-    {
-    }
+	pp_int32 x, y;
+
+	PPPoint(pp_int32 theX, pp_int32 theY) :
+		x(theX), y(theY)
+	{}
+	
+	PPPoint() 
+	{}
 };
 
-struct PPSize 
+struct PPSize
 {
-    pp_int32 width, height;
-    
-    PPSize() :
-        width(0), height(0)
-    {
-    }
-    
-    PPSize(pp_int32 theWidth, pp_int32 theHeight) :
-        width(theWidth), height(theHeight)
-    {
-    }
+	pp_int32 width, height;
 
-    bool operator==(const PPSize& source) const
-    {
-        return (width == source.width && height == source.height);
-    }
+	PPSize(pp_int32 theWidth, pp_int32 theHeight) :
+		width(theWidth), height(theHeight)
+	{}
+	
+	PPSize() 
+	{}
 
-    bool operator!=(const PPSize& source) const
-    {
-        return !(width == source.width && height == source.height);
-    }
-
-    bool match(pp_int32 w, pp_int32 h) const
-    {
-        return width == w && height == h;
-    }
+	bool operator==(const PPSize& source) const
+	{
+		return (width == source.width && height == source.height);
+	}
+	
+	bool operator!=(const PPSize& source) const
+	{
+		return !(width == source.width && height == source.height);
+	}
+	
+	bool match(pp_int32 width, pp_int32 height) const
+	{
+		return (this->width == width && this->height == height);
+	}
 };
 
-struct PPRect 
+struct PPRect
 {
-    pp_int32 x1, y1, x2, y2;
-    
-    PPRect() :
-        x1(0), y1(0), x2(0), y2(0)
-    {
-    }
-    
-    PPRect(const PPPoint& position, const PPSize& size) :
-        x1(position.x), y1(position.y),
-        x2(position.x + size.width), y2(position.y + size.height)
-    {
-    }
+	pp_int32 x1, y1, x2, y2;
 
-    PPRect(pp_int32 x1, pp_int32 y1, pp_int32 x2, pp_int32 y2) :
-        x1(x1), y1(y1), x2(x2), y2(y2)
-    {
-    }
+	PPRect(pp_int32 px1, pp_int32 py1, pp_int32 px2, pp_int32 py2) :
+		x1(px1), y1(py1), x2(px2), y2(py2)
+	{}
 
-    PPPoint getPosition() const { return PPPoint(x1, y1); }
-    PPSize getSize() const { return PPSize(x2 - x1, y2 - y1); }
-    pp_int32 width() const { return x2 - x1; }
-    pp_int32 height() const { return y2 - y1; }
+	PPRect()
+	{}
 
-    void scale(pp_int32 factor)
-    {
-        x1 *= factor;
-        y1 *= factor;
-        x2 *= factor;
-        y2 *= factor;
-    }
-
-    bool intersect(const PPRect& r) const
-    {
-        return !(x2 < r.x1 || x1 > r.x2 || y2 < r.y1 || y1 > r.y2);
-    }
+	pp_int32 width() const { return x2-x1; }
+	pp_int32 height() const { return y2-y1; }
+	
+	void scale(pp_int32 scaleFactor)
+	{
+		x1 *= scaleFactor;
+		y1 *= scaleFactor;
+		x2 *= scaleFactor;
+		y2 *= scaleFactor;
+	}
+	
+	bool intersect(const PPRect& rc) const
+	{
+		pp_int32 left1, left2;
+		pp_int32 right1, right2;
+		pp_int32 top1, top2;
+		pp_int32 bottom1, bottom2;
+		
+		left1 = this->x1;
+		left2 = rc.x1;
+		right1 = this->x1 + this->width();
+		right2 = rc.x1 + rc.width();
+		top1 = this->y1;
+		top2 = rc.y1;
+		bottom1 = this->y1 + this->height();
+		bottom2 = rc.y1 + rc.height();
+		
+		if (bottom1 < top2) return false;
+		if (top1 > bottom2) return false;
+		
+		if (right1 < left2) return false;
+		if (left1 > right2) return false;
+		
+		return true;
+	} 
+	
 };
 
 struct PPColor
 {
-    pp_uint8 r,g,b;
-    
-    PPColor() :
-        r(0), g(0), b(0)
-    {
-    }
-    
-    PPColor(pp_uint8 r, pp_uint8 g, pp_uint8 b) :
-        r(r), g(g), b(b)
-    {
-    }
+	pp_int32 r,g,b;
 
-    void set(pp_uint8 _r, pp_uint8 _g, pp_uint8 _b)
-    {
-        r = _r;
-        g = _g;
-        b = _b;
-    }
+	PPColor(pp_int32 red, pp_int32 green, pp_int32 blue) :
+		r(red), g(green), b(blue)
+	{}
 
-    void scaleFixed(pp_uint32 scale)
-    {
-        r = (pp_uint8)((scale * r) >> 16);
-        g = (pp_uint8)((scale * g) >> 16);
-        b = (pp_uint8)((scale * b) >> 16);
-    }
+	PPColor() :
+		r(), g(), b()
+	{}
+	
+	void validate()
+	{
+		if (r > 255) r = 255;
+		if (g > 255) g = 255;
+		if (b > 255) b = 255;
+	}
 
-    void scale(float factor)
-    {
-        r = (pp_uint8)(r * factor);
-        g = (pp_uint8)(g * factor);
-        b = (pp_uint8)(b * factor);
-    }
+	void scale(float f) 
+	{
+		r = (pp_int32)((float)r*f);
+		g = (pp_int32)((float)g*f);
+		b = (pp_int32)((float)b*f);
+		validate();
+	}
 
-    void scale(float rFactor, float gFactor, float bFactor)
-    {
-        r = (pp_uint8)(r * rFactor);
-        g = (pp_uint8)(g * gFactor);
-        b = (pp_uint8)(b * bFactor);
-    }
+	void scale(float fr, float fg, float fb) 
+	{
+		r = (pp_int32)((float)r*fr);
+		g = (pp_int32)((float)g*fg);
+		b = (pp_int32)((float)b*fb);
+		validate();
+	}
 
-    void clamp()
-    {
-        r = r > 255 ? 255 : r;
-        g = g > 255 ? 255 : g;
-        b = b > 255 ? 255 : b;
-    }
+	void scaleFixed(pp_int32 f) 
+	{
+		r = (r*f)>>16;
+		g = (g*f)>>16;
+		b = (b*f)>>16;
+		validate();
+	}
+	
+	void interpolateFixed(const PPColor& col, pp_int32 f)
+	{
+		r = (f*r + col.r*(65536-f)) >> 16;
+		g = (f*g + col.g*(65536-f)) >> 16;
+		b = (f*b + col.b*(65536-f)) >> 16;
+		validate();
+	}
 
-    PPColor& operator+=(const PPColor& other)
-    {
-        r = (pp_uint8)((pp_uint32)r + other.r);
-        g = (pp_uint8)((pp_uint32)g + other.g);
-        b = (pp_uint8)((pp_uint32)b + other.b);
-        return *this;
-    }
+	PPColor invert() const
+	{
+		PPColor c(255-r, 255-g, 255-b);
+		return c;
+	}
+
+	void set(pp_int32 red, pp_int32 green, pp_int32 blue)
+	{
+		r = red; g = green; b = blue;
+	}
+	
+	void clamp()
+	{
+		if (r < 0) r = 0;
+		if (g < 0) g = 0;
+		if (b < 0) b = 0;
+
+		validate();
+	}
+
+	void operator+=(const PPColor& source)
+	{
+		r+=source.r;
+		g+=source.g;
+		b+=source.b;
+		validate();
+	}
+	
+	bool operator==(const PPColor& source) const
+	{
+		return (r == source.r && g == source.g && b == source.b);
+	}
+	
+	bool operator!=(const PPColor& source) const
+	{
+		return !(r == source.r && g == source.g && b == source.b);
+	}
 };
 
 #endif 

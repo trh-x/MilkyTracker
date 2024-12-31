@@ -186,9 +186,10 @@ protected:
 			(currentClipRect.y1 > height && currentClipRect.y2 > height))
 		{
 			currentClipRect.x1 = 0;
-			currentClipRect.y1 = 0;
 			currentClipRect.x2 = 0;
+			currentClipRect.y1 = 0;
 			currentClipRect.y2 = 0;
+			return;
 		}
 	
 		if (currentClipRect.x1 < 0)
@@ -221,7 +222,7 @@ public:
 
 	void setRect(pp_int32 x1, pp_int32 y1, pp_int32 x2, pp_int32 y2) 
 	{ 
-		currentClipRect = PPRect(x1, y1, x2, y2);
+		currentClipRect.x1 = x1; currentClipRect.y1 = y1; currentClipRect.x2 = x2; currentClipRect.y2 = y2; 
 		origRect = currentClipRect;
 		validateRect();
 	}

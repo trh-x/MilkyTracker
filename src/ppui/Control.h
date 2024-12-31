@@ -97,7 +97,9 @@ public:
 
 	PPRect getBoundingRect() const
 	{
-		return PPRect(location, size);
+		PPRect result(location.x, location.y, 
+					  location.x + size.width, location.y + size.height);
+		return result;
 	}
 
 	pp_int32 getID() const { return id; }
