@@ -104,8 +104,9 @@ add_library(ppui STATIC
 
 target_include_directories(ppui
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
-        ${CMAKE_CURRENT_SOURCE_DIR}/osinterface
+        .
+    PRIVATE
+        osinterface
 )
 
 # Link against osinterface
@@ -128,7 +129,6 @@ if(APPLE)
             ${PROJECT_SOURCE_DIR}/src/tracker/cocoa
         PUBLIC
             cocoa
-            ${CMAKE_CURRENT_SOURCE_DIR}/osinterface/posix
     )
 elseif(WIN32)
     target_sources(ppui
@@ -142,13 +142,6 @@ elseif(WIN32)
         PUBLIC
             win32
     )
-
-    if(TARGET SDL2::SDL2)
-        target_link_libraries(ppui PUBLIC SDL2::SDL2)
-    else()
-        target_include_directories(ppui PUBLIC ${SDL2_INCLUDE_DIRS})
-        target_link_libraries(ppui PUBLIC ${SDL2_LIBRARIES})
-    endif()
 else()
     target_sources(ppui
         PRIVATE
@@ -160,20 +153,7 @@ else()
             sdl/DisplayDeviceFB_SDL.h
             sdl/DisplayDevice_SDL.h
     )
-    target_include_directories(ppui 
-        PUBLIC 
-            sdl
-            ${CMAKE_CURRENT_SOURCE_DIR}/osinterface/posix
-    )
-
-    if(TARGET SDL2::SDL2)
-        # If the distro built SDL2 with CMake, we can just link to an exported target
-        target_link_libraries(ppui PUBLIC SDL2::SDL2)
-    else()
-        # Otherwise we need to do things the old-fashioned way for compatibility
-        target_include_directories(ppui PUBLIC ${SDL2_INCLUDE_DIRS})
-        target_link_libraries(ppui PUBLIC ${SDL2_LIBRARIES})
-    endif()
+    target_include_directories(ppui PUBLIC sdl)
 endif()
 
 if(APPLE)
