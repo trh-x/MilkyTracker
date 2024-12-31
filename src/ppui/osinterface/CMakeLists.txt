@@ -60,15 +60,8 @@ if(APPLE)
             posix/PPSystem_POSIX.h
     )
     target_include_directories(osinterface 
-        PUBLIC 
-            posix
-            ${PROJECT_SOURCE_DIR}/src/tracker/cocoa
-    )
-    
-    # Link against Cocoa framework
-    target_link_libraries(osinterface 
         PRIVATE 
-            "-framework Cocoa"
+            posix
     )
 elseif(WIN32)
     target_sources(osinterface
@@ -93,7 +86,6 @@ elseif(WIN32)
     target_include_directories(osinterface
         PRIVATE
             ${PROJECT_SOURCE_DIR}/src/milkyplay
-        PUBLIC
             win32
     )
 else()
@@ -117,15 +109,15 @@ else()
             sdl/PPMutex.h
             sdl/SDL_ModalLoop.h
     )
-    target_include_directories(osinterface PUBLIC posix)
+    target_include_directories(osinterface PRIVATE posix)
 
     if(TARGET SDL2::SDL2)
         # If the distro built SDL2 with CMake, we can just link to an exported target
-        target_link_libraries(osinterface PUBLIC SDL2::SDL2)
+        target_link_libraries(osinterface PRIVATE SDL2::SDL2)
     else()
         # Otherwise we need to do things the old-fashioned way for compatibility
-        target_include_directories(osinterface PUBLIC ${SDL2_INCLUDE_DIRS})
-        target_link_libraries(osinterface PUBLIC ${SDL2_LIBRARIES})
+        target_include_directories(osinterface PRIVATE ${SDL2_INCLUDE_DIRS})
+        target_link_libraries(osinterface PRIVATE ${SDL2_LIBRARIES})
     endif()
 endif()
 
