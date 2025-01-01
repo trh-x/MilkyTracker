@@ -14,11 +14,10 @@ target_link_libraries(export-to-wav PRIVATE
 )
 
 target_include_directories(export-to-wav PRIVATE
-    ${PROJECT_SOURCE_DIR}/src
     ${PROJECT_SOURCE_DIR}/src/milkyplay
     ${PROJECT_SOURCE_DIR}/src/ppui
     ${PROJECT_SOURCE_DIR}/src/ppui/osinterface
-    ${ZLIB_INCLUDE_DIRS}
+    ${PROJECT_SOURCE_DIR}/src/tracker
 )
 
 install(TARGETS export-to-wav
