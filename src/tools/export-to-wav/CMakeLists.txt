@@ -6,11 +6,7 @@ add_executable(export-to-wav
 
 target_link_libraries(export-to-wav PRIVATE
     trackerlib
-    compression
     osinterface
-    ${LHASA_LIBRARIES}
-    ${ZZIPLIB_LIBRARIES}
-    ${ZLIB_LIBRARIES}
 )
 
 target_include_directories(export-to-wav PRIVATE
