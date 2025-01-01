@@ -30,6 +30,7 @@ target_include_directories(trackerlib
     PUBLIC
         ${PROJECT_SOURCE_DIR}/src/ppui
         ${PROJECT_SOURCE_DIR}/src/ppui/osinterface
+        ${PROJECT_SOURCE_DIR}/src/tracker
 )
 
 if(WIN32)

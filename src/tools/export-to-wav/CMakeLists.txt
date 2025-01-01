@@ -1,19 +1,18 @@
 add_executable(export-to-wav
+    # Sources
     export-to-wav.cpp
     WAVExportParams.cpp
     WAVUtils.cpp
 )
 
-target_link_libraries(export-to-wav PRIVATE
-    trackerlib
-    osinterface
+target_include_directories(export-to-wav
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/src/milkyplay
 )
 
-target_include_directories(export-to-wav PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/milkyplay
-    ${PROJECT_SOURCE_DIR}/src/ppui
-    ${PROJECT_SOURCE_DIR}/src/ppui/osinterface
-    ${PROJECT_SOURCE_DIR}/src/tracker
+target_link_libraries(export-to-wav
+    PRIVATE
+        trackerlib
 )
 
 install(TARGETS export-to-wav
