@@ -5,11 +5,6 @@ add_executable(export-to-wav
     WAVUtils.cpp
 )
 
-target_include_directories(export-to-wav
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/src/milkyplay
-)
-
 target_link_libraries(export-to-wav
     PRIVATE
         trackerlib
